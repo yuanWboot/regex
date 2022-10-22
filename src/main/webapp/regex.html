@@ -14,9 +14,10 @@
 <script>
     //获取表单提交,为其设置函数
     document.getElementById("fromInfo").onsubmit = function () {
-        //身份证正则表达式
-
         //中文姓名正则表达式
+        const regex1 = /^[\u4e00-\u9fa5]{2,10}$/;
+        //身份证正则表达式
+        const regex2 = /^[1234568]\d{16[0-9xX]}$/;
 
     }
 </script>
