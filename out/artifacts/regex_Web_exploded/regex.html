@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>regex</title>
+</head>
+<body>
+<form action="#" method="post" id="fromInfo">
+<div id="err" style="color: red"></div>
+<div>姓名：<input id="name" name="name"></div>
+<div>身份证号：<input id="idno" name="idno"></div>
+<div> <input type="submit"></div>
+</form>
+<script>
+    //获取表单提交,为其设置函数
+    document.getElementById("fromInfo").onsubmit = function () {
+        //中文姓名正则表达式
+        const regex1 = /^[\u4e00-\u9fa5]{2,10}$/;
+        //身份证正则表达式
+        const regex2 = /^[1234568]\d{16}[0-9xX]$/;
+        //获取用户输入的姓名与身份证的值
+        let name = document.getElementById("name").value;
+        let idno = document.getElementById("idno").value;
+        //判断用户输入的姓名和身份证是否符合规则，不符合提示无效并阻止表单提交
+        if(!regex1.test(name)){
+            document.getElementById("err").innerHTML = "无效姓名";
+            return false;
+        }else if(!regex2.test(idno)){
+            document.getElementById("err").innerHTML = "无效身份证";
+            return false;
+        }else {
+            alert("校验通过，提交中...");
+            return true;
+        }
+
+    }
+</script>
+</body>
+</html>
